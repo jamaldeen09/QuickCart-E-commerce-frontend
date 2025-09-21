@@ -14,7 +14,7 @@ export const useResizer = (screenSize: number) => {
 
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    }, [screenSize]);
 
     return [isScreen] as const;
 }

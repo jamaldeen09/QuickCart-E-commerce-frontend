@@ -54,7 +54,9 @@ const SingleProductPage = (): React.ReactElement => {
 
 
     useEffect(() => {
-        fetchProduct();
+        if (productId) {
+            fetchProduct();
+        } else { return }
     }, [productId]);
 
 
@@ -164,11 +166,11 @@ const SingleProductPage = (): React.ReactElement => {
                                                 } else {
                                                     return ProductSystem.addItemToCart(
                                                         singleProduct?._id as string,
-                                                        setIsAdding,
                                                         setIsBuying,
                                                         updateClientsCart,
                                                         "adding",
-                                                        router
+                                                        router,
+                                                        setIsAdding,
                                                     )
                                                 }
                                             }}
@@ -190,11 +192,11 @@ const SingleProductPage = (): React.ReactElement => {
                                                 } else {
                                                     return ProductSystem.addItemToCart(
                                                         singleProduct?._id as string,
-                                                        setIsAdding,
                                                         setIsBuying,
                                                         updateClientsCart,
                                                         "buying",
-                                                        router
+                                                        router,
+                                                        setIsAdding,
                                                     )
                                                 }
                                             }}

@@ -18,7 +18,7 @@ const ProductsProvider = ({ children }: { children: React.ReactNode }) => {
             productsGetter,
             (state: boolean) => dispatch(isFetchingProducts(state)),
         )
-    }, []);
+    }, [dispatch, productsDataFetchingSettings.limit, productsDataFetchingSettings.page, productsGetter]);
     return children
 }
 

@@ -76,17 +76,21 @@ export class ProductSystem {
 
     static async addItemToCart(
         id: string,
-        setIsAdding: Actiontype<boolean>,
         setIsBuying: Actiontype<boolean>,
         updateCart: (data: PopulatedCart) => void,
         action: "buying" | "adding",
         appRouter: AppRouterInstance,
+        setIsAdding?: Actiontype<boolean>,
     ) {
         try {
             if (action === "adding") {
-                setIsAdding(true);
+                if (setIsAdding) {
+                    setIsAdding(true);
+                }
                 const response = await axiosHandlers.axios.post(`/api/products/add-to-cart/${id}`);
-                setIsAdding(false);
+                if (setIsAdding) {
+                    setIsAdding(false);
+                }
                 updateCart(response.data.data.cart);
                 callToast("success", response.data.message);
             } else {
@@ -98,7 +102,7 @@ export class ProductSystem {
                 callToast("success", response.data.message);
             };
         } catch (err: unknown) {
-            setIsAdding(false);
+            if (setIsAdding)  setIsAdding(false);
             setIsBuying(false);
             if (err instanceof axiosHandlers.axiosError) {
                 console.log(err.response?.data);

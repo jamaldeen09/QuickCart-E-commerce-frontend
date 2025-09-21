@@ -1,9 +1,9 @@
 "use client"
 import { useAppSelector, useAppDispatch } from "@/app/redux/reduxTypes";
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ChangeEvent } from "react";
 import Profile from "./Profile";
-import { XIcon, Upload, User } from "lucide-react";
+import { XIcon, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import z from "zod"
 import { useForm } from "react-hook-form";
@@ -27,7 +27,7 @@ import LoadingSpinner from "../LoadingSpinner";
 const updateProfileValidation = z.object({
   firstname: z.string().min(2, { message: "Firstname must be at least 2 characters" }),
   lastname: z.string().min(2, { message: "Lastname must be at least 2 characters" }),
-  avatar: z.any().optional(),
+  avatar: z.instanceof(File).optional().or(z.string().optional()),
 })
 
 const ProfileModal = (): React.ReactElement => {
@@ -73,7 +73,7 @@ const ProfileModal = (): React.ReactElement => {
   });
 
   // Handle avatar file selection
-  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>, field: any) => {
+  const handleAvatarChange = (e: ChangeEvent<HTMLInputElement>, field: { onChange: (value: File) => void }) => {
     const file = e.target.files?.[0];
     if (file) {
       field.onChange(file);
@@ -91,7 +91,9 @@ const ProfileModal = (): React.ReactElement => {
   const onSubmit = (values: z.infer<typeof updateProfileValidation>) => {
 
     const data: FormData =  new FormData()
-    data.append("avatar", values.avatar);
+    if (values.avatar instanceof File) {
+      data.append("avatar", values.avatar);
+    }
     data.append("firstname", values.firstname);
     data.append("lastname", values.lastname);
   

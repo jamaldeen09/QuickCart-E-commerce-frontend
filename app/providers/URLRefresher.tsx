@@ -17,7 +17,7 @@ const URLRefresher = ({ children }: { children: React.ReactNode }): React.ReactN
         }  else if (id && pathname !== "/product") {
             router.replace('/');
         }
-    }, []);
+    }, [auth, id, pathname, router]);
 
     return children;
 };

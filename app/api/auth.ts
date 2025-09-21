@@ -62,7 +62,7 @@ export class AuthenticationSystem {
             updatedAt: formatDate(profile.updatedAt),
             role: profile.role,
             likedProducts: profile.likedProducts.map((product) => {
-                return { ...product, createdAt: formatDate(product.createdAt), updatedAt: formatDate(product.updatedAt) }
+                return { ...product, createdAt: formatDate(product?.createdAt) || "", updatedAt: formatDate(product?.updatedAt) || ""}
             }),
             savedAddresses: profile.savedAddresses,
             connectedAccounts: profile.connectedAccounts,
@@ -72,8 +72,8 @@ export class AuthenticationSystem {
                     ...item,
                     product: {
                         ...item.product,
-                        createdAt: formatDate(item.product.createdAt),
-                        updatedAt: formatDate(item.product.updatedAt)
+                        createdAt: formatDate(item.product?.createdAt) || "",
+                        updatedAt: formatDate(item.product?.updatedAt) || ""
                     } as ConfiguredProduct
                 })),
                 createdAt: formatDate(order.createdAt),

@@ -9,7 +9,7 @@ const OrdersSkeleton = () => {
       backgroundPosition: '-200% 0'
     },
     animate: {
-      backgroundPosition: ['0% 0', '200% 0'] as any,
+      backgroundPosition: ['0% 0', '200% 0'] as string[],
       transition: {
         duration: 1.5,
         repeat: Infinity,

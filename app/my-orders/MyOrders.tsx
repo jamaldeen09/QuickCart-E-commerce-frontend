@@ -5,7 +5,6 @@ import { assets } from "../assets/assets";
 import Image from "next/image";
 import Footer from "../components/landingPage/Footer";
 import { useAppDispatch, useAppSelector } from "../redux/reduxTypes";
-import { useResizer } from "../customHooks/resizer";
 import { motion, AnimatePresence } from "framer-motion";
 import MyOrdersSkeleton from "./MyOrdersSkeleton";
 import { AuthenticationSystem } from "../api/auth";
@@ -19,7 +18,6 @@ import { formatDate } from "../utils/generalHelpers";
 
 const MyOrders = () => {
     const { orders, fetching } = useAppSelector((state) => state.profileInformation);
-    const [screenSize] = useResizer(1120);
     const dispatch = useAppDispatch();
     const [clearOrderHistory, setClearOrderHistory] = useState<boolean>(false);
     const [isClearing, setIsClearing] = useState<boolean>(false)
@@ -52,7 +50,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         AuthenticationSystem.verifyAccount(router, setShouldMount, { page: "my-orders" });
-    }, []);
+    }, [router]);
 
     if (!shouldMount) {
         return (

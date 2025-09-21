@@ -88,7 +88,7 @@ const Contact = (): React.ReactElement => {
             icon: Mail,
             title: "Email",
             content: "support@techstore.com",
-            subcontent: "We'll respond within 24 hours"
+            subcontent: "We&apos;ll respond within 24 hours"
         },
         {
             icon: MapPin,
@@ -128,7 +128,7 @@ const Contact = (): React.ReactElement => {
                         Get in Touch
                     </motion.h1>
                     <motion.p variants={itemVariants} className="text-xl text-gray-700 max-w-2xl mx-auto">
-                        Have questions or need assistance? We're here to help you with all your tech needs.
+                        Have questions or need assistance? We&apos;re here to help you with all your tech needs.
                     </motion.p>
                 </motion.div>
             </section>

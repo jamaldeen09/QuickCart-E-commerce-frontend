@@ -11,7 +11,7 @@ import ProfileModal from "../components/reusable/profileModal/ProfileModal";
 import ShopSkeletonLoader from "./ShopSkeletonLoader";
 import { ConfiguredProduct } from "../redux/data/productSlice";
 
-const page = (): React.ReactElement => {
+const Shop = (): React.ReactElement => {
   const { products } = useAppSelector((state) => state.products);
   const { likedProducts, fetching, _id } = useAppSelector((state) => state.profileInformation)
 
@@ -62,4 +62,4 @@ const page = (): React.ReactElement => {
   );
 };
 
-export default page;
+export default Shop;

@@ -48,7 +48,7 @@ const Cart = () => {
 
   useEffect(() => {
     AuthenticationSystem.verifyAccount(router, setShouldMount, { page: "cart" });
-  }, []);
+  }, [router]);
 
   if (!shouldMount) {
     return (

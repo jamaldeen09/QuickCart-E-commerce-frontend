@@ -33,7 +33,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }): React.ReactElem
             handleFetchingState,
             fetchDashboardData,
         );
-    }, [role, router]);
+    }, [role, router, adminSystem, fetchDashboardData, handleFetchingState]);
 
     // Show nothing while checking permissions
     if (isAdmin === null) {

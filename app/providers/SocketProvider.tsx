@@ -44,7 +44,7 @@ const SocketProvider = ({
             socket.off("disconnect", handleDisconnect);
             cleanupProfile();
         }
-    }, []);
+    }, [dispatch , extractProfile, fetching]);
     return children;
 };
 

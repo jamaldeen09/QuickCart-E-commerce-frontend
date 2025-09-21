@@ -3,13 +3,12 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 
 const MyOrdersSkeleton = () => {
-    // Animation for the shimmer effect
     const shimmerVariants: Variants = {
         initial: {
             backgroundPosition: '-200% 0'
         },
         animate: {
-            backgroundPosition: ['0% 0', '200% 0'] as any,
+            backgroundPosition: ['0% 0', '200% 0'] as string[],
             transition: {
                 duration: 1.5,
                 repeat: Infinity,

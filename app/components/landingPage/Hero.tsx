@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import { assets } from "@/app/assets/assets";
 import { ChevronLeft, ChevronRight, Play, Pause, ArrowRight } from "lucide-react";
-import { NavIcon } from "./Navbar";
 import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/app/redux/reduxTypes";
@@ -167,7 +166,6 @@ const Hero = (): React.ReactElement => {
         return ProductSystem.addItemToCart(
           getId(productId)?._id as string,
           setIsAdding,
-          setIsBuying,
           updateClientsCart,
           "buying",
           router

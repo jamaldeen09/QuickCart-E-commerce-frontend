@@ -24,7 +24,7 @@ export const getDetails = (auth: string): React.ReactElement | null => {
             <>
                 <h1 className="font-bold text-3xl text-gray-800 mb-2">Reset Your Password</h1>
                 <p className="text-gray-600 text-sm">
-                    Enter your email address and we'll send you instructions to reset your password
+                    Enter your email address and we&apos;ll send you instructions to reset your password
                 </p>
             </>
         );
@@ -90,8 +90,8 @@ export const getLink = (auth: string, router: AppRouterInstance, isLoading: bool
             {auth === "register" ? (
                 "Already have an account? "
             ) : auth === "login" ? (
-                "Dont have an account? "
-            ) : auth === "password-reset" ? "Remember your password? " : auth === "otp-verification" ? "Didn't get the code? " : ""}
+                "Don&apos;t have an account? "
+            ) : auth === "password-reset" ? "Remember your password? " : auth === "otp-verification" ? "Didn&apos;t get the code? " : ""}
             <span
                 onClick={() => {
                     if (auth === "register" || auth === "password-reset") {

@@ -23,7 +23,6 @@ const ProductCard = ({ product, isLiked, id, isCreator }: {
     const { currentlyLiking, products } = useAppSelector((state) => state.products);
     const singleProduct = products.find(((p) => p._id === id));
 
-    const [_, setIsAdding] = useState<boolean>(false);
     const [isBuying, setIsBuying] = useState<boolean>(false);
 
     const updateClientsCart = (data: PopulatedCart) => {
@@ -179,7 +178,6 @@ const ProductCard = ({ product, isLiked, id, isCreator }: {
                             } else {
                                 return ProductSystem.addItemToCart(
                                     singleProduct?._id as string,
-                                    setIsAdding,
                                     setIsBuying,
                                     updateClientsCart,
                                     "buying",

@@ -31,7 +31,6 @@ const ProductCard = ({
     const dispatch = useAppDispatch();
     const { fullname, _id, email } = useAppSelector((state) => state.profileInformation);
     const { products } = useAppSelector((state) => state.products);
-    const [_, setIsAdding] = useState<boolean>(false);
 
     const [isBuying, setIsBuying] = useState<boolean>(false);
     const router = useRouter();
@@ -106,7 +105,6 @@ const ProductCard = ({
                             } else {
                                 return ProductSystem.addItemToCart(
                                     id as string,
-                                    setIsAdding,
                                     setIsBuying,
                                     updateClientsCart,
                                     "buying",
