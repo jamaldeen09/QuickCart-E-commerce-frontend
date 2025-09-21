@@ -36,7 +36,6 @@ const Hero = (): React.ReactElement => {
   const { fullname, _id, email, } = useAppSelector((state) => state.profileInformation);
   const { products } = useAppSelector((state) => state.products);
   const getId = (id: string) => products.find((product) => product._id === id);
-  const [_, setIsAdding] = useState<boolean>(false);
   const [isBuying, setIsBuying] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
@@ -165,7 +164,7 @@ const Hero = (): React.ReactElement => {
         setAutoPlay(false);
         return ProductSystem.addItemToCart(
           getId(productId)?._id as string,
-          setIsAdding,
+          setIsBuying,
           updateClientsCart,
           "buying",
           router

@@ -25,9 +25,9 @@ const Subscribe = (): React.ReactElement => {
         mode: "onChange"
     });
 
-    const onSubmit = (values: z.infer<typeof subscribeSchema>) => {
-        setTimeout(() => { callToast("success", "Subscription succesfull"); subscribeSchema.reset() }, 3000);
-
+    const onSubmit = () => {
+        callToast("success", "Subscription succesfull");
+        subscribeSchema.reset();
     }
     return (
         <ScrollFadeIn>

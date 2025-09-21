@@ -11,14 +11,18 @@ const SocketProvider = ({
     children
 }: { children: React.ReactNode }): React.ReactNode => {
     const dispatch = useAppDispatch();
-    const extractProfile = (data: ConfiguredProfilePayload) => {
-        dispatch(getProfile(data));
-        dispatch(setFetching(false));
-    }
-
-    const fetching = (state: boolean) => dispatch(setFetching(state));
 
     useEffect(() => {
+        // Move functions inside useEffect to avoid dependency issues
+        const extractProfile = (data: ConfiguredProfilePayload) => {
+            dispatch(getProfile(data));
+            dispatch(setFetching(false));
+        }
+
+        const fetching = (state: boolean) => {
+            dispatch(setFetching(state));
+        }
+
         if (!socket.connected) {
             console.log("Attempting to connect to websocket");
             socket.connect();
@@ -44,7 +48,8 @@ const SocketProvider = ({
             socket.off("disconnect", handleDisconnect);
             cleanupProfile();
         }
-    }, [dispatch , extractProfile, fetching]);
+    }, [dispatch]); // Only dispatch is needed as dependency now
+    
     return children;
 };
 

@@ -240,7 +240,7 @@ const AuthModal = ({
                 id as string,);
             dispatch(setTrigger({ key: "authModal", value: true }));
         }
-    }, [])
+    }, [dispatch, auth, id, pathname, router])
 
     const [screenSize] = useResizer(640);
     const styles = {
